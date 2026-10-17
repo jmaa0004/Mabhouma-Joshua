@@ -1,13 +1,12 @@
 using System;
-using System.Collections.Generic;
 
-namespace Namespace_ExercicePerson;
+using Namespace_ExercicePerson;
 
 public class Bank
 {
     public required string Name { get; set; }
 
-    // Dictionnaire en lecture seule (Étape 3) adapté pour tous les comptes (Étape 8)
+    
     public Dictionary<string, Account> Accounts { get; } = new Dictionary<string, Account>(); // J'ai modifié CurrentAccount -> Account selon les consignes
 
 
@@ -23,7 +22,7 @@ public class Bank
         }
     }
 
-    // Supprimer un compte (Étape 3)
+    
     public void DeleteAccount(string number)
     {
         if (Accounts.ContainsKey(number))
@@ -36,7 +35,7 @@ public class Bank
         }
     }
 
-    // Étape 4 : Retourner le solde d'un compte via son numéro
+
     public double GetAccountBalance(string number)
     {
         if (Accounts.TryGetValue(number, out Account? account))
@@ -48,7 +47,7 @@ public class Bank
         return 0;
     }
 
-    // Étape 5 : Donner la somme de tous les comptes d'une personne
+   
     public double GetTotalBalance(Person Owner)
     {
         double total = 0;
@@ -56,9 +55,7 @@ public class Bank
         foreach (Account account in Accounts.Values)
         {
             if (account.Owner == Owner)
-            {
-                total += account.Balance;
-            }
+            {total += account.Balance;}
         }
 
         return total;
